@@ -26,5 +26,5 @@ A powerful Retrieval-Augmented Generation (RAG) system built with FastAPI, Innge
 ## 🚀 How to Run
 1. **Clone the repository:**
 ```bash
-   git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
+   git clone https://github.com/GuruYoda/rag_application.git
    cd your-repo-name
