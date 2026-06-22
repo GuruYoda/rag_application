@@ -1,22 +1,22 @@
-## 🧭 Architecture Diagram (`docs/architecture.mmd`)
+## 🧭 Architecture Diagram
 
 ```mermaid
 flowchart LR
     subgraph Ingestion
         A[NASA PDFs] --> B[PDF Parser]
         B --> C[Semantic Chunker]
-        C --> D[Embedder<br/>text-embedding-3-large]
+        C --> D["Embedder\ntext-embedding-3-large"]
         D --> E[(Qdrant)]
         C --> F[(BM25 Index)]
     end
 
     subgraph Query
         Q[User Query] --> R[FastAPI]
-        R --> HR[Hybrid Retriever<br/>Dense + BM25 + RRF]
+        R --> HR["Hybrid Retriever\nDense + BM25 + RRF"]
         HR --> E
         HR --> F
-        HR --> RR[Cross-Encoder<br/>Reranker]
-        RR --> G[LLM Generator<br/>GPT-4o-mini]
+        HR --> RR["Cross-Encoder\nReranker"]
+        RR --> G["LLM Generator\nGPT-4o-mini"]
         G --> A1[Answer + Citations]
     end
 
@@ -28,6 +28,6 @@ flowchart LR
 
     subgraph Evaluation
         EV[RAGAS Harness] --> Gold[Gold Set]
-        EV --> Metrics[Faithfulness<br/>Relevancy<br/>Precision]
+        EV --> Metrics["Faithfulness\nRelevancy\nPrecision"]
     end
 ```
