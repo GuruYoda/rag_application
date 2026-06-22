@@ -1,0 +1,32 @@
+## 🧭 Architecture Diagram (`docs/architecture.mmd`)
+
+```mermaid
+flowchart LR
+    subgraph Ingestion
+        A[NASA PDFs] --> B[PDF Parser]
+        B --> C[Semantic Chunker]
+        C --> D[Embedder<br/>text-embedding-3-large]
+        D --> E[(Qdrant)]
+        C --> F[(BM25 Index)]
+    end
+
+    subgraph Query
+        Q[User Query] --> R[FastAPI]
+        R --> HR[Hybrid Retriever<br/>Dense + BM25 + RRF]
+        HR --> E
+        HR --> F
+        HR --> RR[Cross-Encoder<br/>Reranker]
+        RR --> G[LLM Generator<br/>GPT-4o-mini]
+        G --> A1[Answer + Citations]
+    end
+
+    subgraph Observability
+        OT[OpenTelemetry] -.-> HR
+        OT -.-> RR
+        OT -.-> G
+    end
+
+    subgraph Evaluation
+        EV[RAGAS Harness] --> Gold[Gold Set]
+        EV --> Metrics[Faithfulness<br/>Relevancy<br/>Precision]
+    end
