@@ -5,7 +5,7 @@ flowchart LR
     subgraph Ingestion
         A[NASA PDFs] --> B[PDF Parser]
         B --> C[Semantic Chunker]
-        C --> D["Embedder\ntext-embedding-3-large"]
+        C --> D["Embedder\nNomic-Embed-Text"]
         D --> E[(Qdrant)]
         C --> F[(BM25 Index)]
     end
@@ -16,7 +16,7 @@ flowchart LR
         HR --> E
         HR --> F
         HR --> RR["Cross-Encoder\nReranker"]
-        RR --> G["LLM Generator\nGPT-4o-mini"]
+        RR --> G["LLM Generator\nllama3.1"]
         G --> A1[Answer + Citations]
     end
 
