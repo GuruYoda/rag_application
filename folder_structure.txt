@@ -1,0 +1,62 @@
+rag-engineering-copilot/
+├── README.md
+├── LICENSE
+├── .env.example
+├── .gitignore
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+├── docs/
+│   ├── architecture.png
+│   └── architecture.mmd
+├── data/
+│   ├── raw/                 # NASA PDFs (gitignored, fetched by script)
+│   └── processed/           # chunks.jsonl
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── ingestion/
+│   │   ├── __init__.py
+│   │   ├── fetch_nasa.py
+│   │   ├── parse_pdf.py
+│   │   └── chunker.py
+│   ├── embeddings/
+│   │   ├── __init__.py
+│   │   └── embedder.py
+│   ├── vectorstore/
+│   │   ├── __init__.py
+│   │   └── qdrant_client.py
+│   ├── retrieval/
+│   │   ├── __init__.py
+│   │   ├── hybrid_retriever.py
+│   │   └── reranker.py
+│   ├── generation/
+│   │   ├── __init__.py
+│   │   ├── prompts.py
+│   │   └── generator.py
+│   ├── pipeline/
+│   │   ├── __init__.py
+│   │   └── rag_pipeline.py
+│   ├── observability/
+│   │   ├── __init__.py
+│   │   └── tracing.py
+│   └── api/
+│       ├── __init__.py
+│       └── main.py
+├── evals/
+│   ├── gold_set.jsonl
+│   ├── run_ragas.py
+│   └── results/
+│       └── ragas_report.md
+├── notebooks/
+│   ├── 01_ingestion_demo.ipynb
+│   ├── 02_retrieval_quality.ipynb
+│   └── 03_ragas_evaluation.ipynb
+├── scripts/
+│   ├── bootstrap.sh
+│   └── seed_qdrant.py
+└── tests/
+    ├── test_chunker.py
+    ├── test_retriever.py
+    └── test_pipeline.py
