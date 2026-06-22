@@ -1,4 +1,13 @@
-# rag_application
+# 🛰️ RAG Engineering Copilot
+
+A production-style Retrieval-Augmented Generation system over public 
+NASA technical reports. Demonstrates end-to-end RAG engineering: 
+ingestion → hybrid retrieval → reranking → generation → evaluation → 
+observability.
+
+> Mirrors the architecture I built for engineering-requirement copilots 
+> at Mercedes-Benz R&D India — with public data and clean, deployable code.
+
 Complete RAG pipeline
 
 A powerful Retrieval-Augmented Generation (RAG) system built with FastAPI, Inngest, and Qdrant. This project allows you to ingest PDF documents, perform semantic searches, and get intelligent answers via Ollama-powered LLMs.
